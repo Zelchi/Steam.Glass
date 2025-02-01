@@ -53,6 +53,10 @@ const ListItem = styled.li<{ selected: boolean }>`
     white-space: nowrap;
     overflow: hidden;
 
+    p {
+        padding-left: 5px;
+    }
+
     &:hover {
         background-color: #3c6e91;
         padding-left: 5px;
@@ -65,7 +69,7 @@ const ListaDeJogos = () => {
 
     const [inicio, setInicio] = useState(0);
     const [fim, setFim] = useState(100);
-    const { data } = useGames();
+    const { data, isLoading } = useGames();
 
     const dispatch = useDispatch();
 
@@ -93,7 +97,7 @@ const ListaDeJogos = () => {
         }
     };
 
-    return (
+    return isLoading ? {<Carregando>} : (
         <Container>
             <BarraPesquisa />
             <List onScroll={scroll} ref={listInnerRef}>
@@ -103,12 +107,11 @@ const ListaDeJogos = () => {
                         key={index}
                         onClick={() => { navigate(`/jogo/${jogo.appid}`) }}
                     >
-                        {jogo.name}
+                        <p>{jogo.name}</p>
                     </ListItem>
                 ))}
             </List>
-        </Container>
-    )
+        </Container>)
 }
 
 export default memo(ListaDeJogos);
