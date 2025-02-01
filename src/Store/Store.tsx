@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import jogoReducer from "./JogoReducer";
+import jogoState from "./reducers/listaJogos";
 
 const store = configureStore({
     reducer: {
-        jogoState: jogoReducer,
+        jogoState,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false,
@@ -11,5 +11,4 @@ const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-
 export default store;

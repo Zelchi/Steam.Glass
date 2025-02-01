@@ -1,25 +1,19 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
-import { BarraDeNavegacao } from './components/Global/BarraDeNavegacao'
-import { BarraLateralDosJogos } from './components/Global/BarraLateralDosJogos'
-import { PaginaInicial } from './components/Home/PaginaInicial'
-import { DetalheDoJogo } from './components/Info/DetalheDoJogo'
-import { Provider } from 'react-redux'
-import store from './Store/Store'
-import './App.css'
+import ListaDeJogos from './components/Global/ListaDeJogos';
+import styled from 'styled-components'
+
+const Steam = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+`;
 
 const App = () => {
-  return (
-    <Provider store={store}>
-      <HashRouter>
-        <BarraDeNavegacao />
-        <BarraLateralDosJogos/>
-        <Routes>
-          <Route path="/" element={<PaginaInicial />} />
-          <Route path="/jogo/:id" element={<DetalheDoJogo />} />
-        </Routes>
-      </HashRouter>
-    </Provider>
-  )
+    console.log('Oi')
+    return (
+        <Steam>
+            <ListaDeJogos />
+        </Steam>
+    )
 }
 
 export default App

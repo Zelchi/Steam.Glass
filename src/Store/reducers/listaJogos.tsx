@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Jogo {
+export interface Jogo {
     appid: number;
     name: string;
 }
